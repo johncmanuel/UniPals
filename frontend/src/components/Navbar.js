@@ -1,146 +1,97 @@
 import React from "react";
-import {
-  Container,
-  Divider,
-  Dropdown,
-  Grid,
-  Header,
-  Image,
-  List,
-  Menu,
-  Segment,
-} from "semantic-ui-react";
+import ResponsiveHeader from "dna-responsive-nav";
+import "dna-responsive-nav/dist/dna-rn.css";
+import { NAMES } from "../names.json";
+import { Icon } from "semantic-ui-react";
+import { isMobile } from "react-device-detect";
 
-const FixedMenuLayout = () => (
-  <div>
-    <Menu fixed="top" inverted>
-      <Container>
-        <Menu.Item as="a" header>
-          <Image size="mini" src="/logo.png" style={{ marginRight: "1.5em" }} />
-          Project Name
-        </Menu.Item>
-        <Menu.Item as="a">Home</Menu.Item>
+const linkCSS = {
+  paddingLeft: "10px",
+};
 
-        <Dropdown item simple text="Dropdown">
-          <Dropdown.Menu>
-            <Dropdown.Item>List Item</Dropdown.Item>
-            <Dropdown.Item>List Item</Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Header>Header Item</Dropdown.Header>
-            <Dropdown.Item>
-              <i className="dropdown icon" />
-              <span className="text">Submenu</span>
-              <Dropdown.Menu>
-                <Dropdown.Item>List Item</Dropdown.Item>
-                <Dropdown.Item>List Item</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown.Item>
-            <Dropdown.Item>List Item</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </Container>
-    </Menu>
-    {/* 
-    <Container text style={{ marginTop: "7em" }}>
-      <Header as="h1">Semantic UI React Fixed Template</Header>
-      <p>This is a basic fixed menu template using fixed size containers.</p>
-      <p>
-        A text container is used for the main container, which is useful for
-        single column layouts.
-      </p>
-
-      <Image
-        src="/images/wireframe/media-paragraph.png"
-        style={{ marginTop: "2em" }}
-      />
-      <Image
-        src="/images/wireframe/paragraph.png"
-        style={{ marginTop: "2em" }}
-      />
-      <Image
-        src="/images/wireframe/paragraph.png"
-        style={{ marginTop: "2em" }}
-      />
-      <Image
-        src="/images/wireframe/paragraph.png"
-        style={{ marginTop: "2em" }}
-      />
-      <Image
-        src="/images/wireframe/paragraph.png"
-        style={{ marginTop: "2em" }}
-      />
-      <Image
-        src="/images/wireframe/paragraph.png"
-        style={{ marginTop: "2em" }}
-      />
-      <Image
-        src="/images/wireframe/paragraph.png"
-        style={{ marginTop: "2em" }}
-      />
-    </Container>
-
-    <Segment
-      inverted
-      vertical
-      style={{ margin: "5em 0em 0em", padding: "5em 0em" }}
-    >
-      <Container textAlign="center">
-        <Grid divided inverted stackable>
-          <Grid.Column width={3}>
-            <Header inverted as="h4" content="Group 1" />
-            <List link inverted>
-              <List.Item as="a">Link One</List.Item>
-              <List.Item as="a">Link Two</List.Item>
-              <List.Item as="a">Link Three</List.Item>
-              <List.Item as="a">Link Four</List.Item>
-            </List>
-          </Grid.Column>
-          <Grid.Column width={3}>
-            <Header inverted as="h4" content="Group 2" />
-            <List link inverted>
-              <List.Item as="a">Link One</List.Item>
-              <List.Item as="a">Link Two</List.Item>
-              <List.Item as="a">Link Three</List.Item>
-              <List.Item as="a">Link Four</List.Item>
-            </List>
-          </Grid.Column>
-          <Grid.Column width={3}>
-            <Header inverted as="h4" content="Group 3" />
-            <List link inverted>
-              <List.Item as="a">Link One</List.Item>
-              <List.Item as="a">Link Two</List.Item>
-              <List.Item as="a">Link Three</List.Item>
-              <List.Item as="a">Link Four</List.Item>
-            </List>
-          </Grid.Column>
-          <Grid.Column width={7}>
-            <Header inverted as="h4" content="Footer Header" />
-            <p>
-              Extra space for a call to action inside the footer that could help
-              re-engage users.
-            </p>
-          </Grid.Column>
-        </Grid>
-
-        <Divider inverted section />
-        <Image centered size="mini" src="/logo.png" />
-        <List horizontal inverted divided link size="small">
-          <List.Item as="a" href="#">
-            Site Map
-          </List.Item>
-          <List.Item as="a" href="#">
-            Contact Us
-          </List.Item>
-          <List.Item as="a" href="#">
-            Terms and Conditions
-          </List.Item>
-          <List.Item as="a" href="#">
-            Privacy Policy
-          </List.Item>
-        </List>
-      </Container>
-    </Segment> */}
-  </div>
+const links = (
+  <ul>
+    <li>
+      <a className="" href="/" aria-label="profile" title="Profile">
+        <Icon name="user"></Icon>
+      </a>
+    </li>
+    <li>
+      <a className="" href="/" aria-label="groups" title="Groups">
+        <Icon name="group"></Icon>
+      </a>
+    </li>
+    <li>
+      <a className="" href="/" aria-label="messages" title="Messages">
+        <Icon name="chat"></Icon>
+      </a>
+    </li>
+    <li>
+      <a className="" href="/" aria-label="notifications" title="Notifications">
+        <Icon name="bell"></Icon>
+      </a>
+    </li>
+  </ul>
 );
 
-export default FixedMenuLayout;
+const linksMobile = (
+  <ul>
+    <li>
+      <a className="" href="/" aria-label="profile" title="Profile">
+        <Icon name="user"></Icon>
+        <span style={linkCSS}>User</span>
+      </a>
+    </li>
+    <li>
+      <a className="" href="/" aria-label="groups" title="Group">
+        <Icon name="group"></Icon>
+        <span style={linkCSS}>Groups</span>
+      </a>
+    </li>
+    <li>
+      <a className="" href="/" aria-label="messages" title="Messages">
+        <Icon name="chat"></Icon>
+        <span style={linkCSS}>Messages</span>
+      </a>
+    </li>
+    <li>
+      <a className="" href="/" aria-label="notifications" title="Notifications">
+        <Icon name="bell"></Icon>
+        <span style={linkCSS}>Notifications</span>
+      </a>
+    </li>
+  </ul>
+);
+
+const handleSearch = (q) => {
+  if (q) {
+    // I'll come up with a way to search the website, or disable
+    // any searching to save more time.
+    // const url = "https://google.com/search?q=" + encodeURIComponent(q);
+    // window.open(url, "_blank");
+    console.log("search");
+  }
+};
+
+const Navbar = () => {
+  if (isMobile) {
+    return (
+      <ResponsiveHeader
+        siteName={NAMES.name}
+        links={linksMobile}
+        logo="/favicon-32x32.png"
+        handleSearch={handleSearch}
+      />
+    );
+  }
+  return (
+    <ResponsiveHeader
+      siteName={NAMES.name}
+      links={links}
+      logo="/favicon-32x32.png"
+      handleSearch={handleSearch}
+    />
+  );
+};
+
+export default Navbar;
