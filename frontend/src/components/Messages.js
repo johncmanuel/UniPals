@@ -1,13 +1,15 @@
 import React from "react";
-import { Grid, Header, Segment, Comment } from "semantic-ui-react";
+import { Grid, Header, Comment } from "semantic-ui-react";
 import FriendCard from "components/FriendCard";
+import MessageForm from "components/MessageForm";
+import ApplyPadding from "components/ApplyPadding";
 
 const classes = {};
 
 const MessageBox = () => (
   <Comment.Group size="large">
     <Header as="h2" dividing>
-      @Rick Sanchez
+      Rick Sanchez
     </Header>
 
     <Comment>
@@ -43,7 +45,7 @@ const MessageBox = () => (
 function Messages() {
   return (
     <>
-      <div style={{ paddingTop: "20vh" }}></div>
+      <ApplyPadding />
       <Grid stackable container columns={2}>
         <Grid.Row>
           <Grid.Column width="6">
@@ -52,7 +54,7 @@ function Messages() {
           </Grid.Column>
           <Grid.Column>
             <MessageBox />
-            <Segment>Message @Rick Sanchez</Segment>
+            <MessageForm name="Rick Sanchez" />
           </Grid.Column>
         </Grid.Row>
       </Grid>
