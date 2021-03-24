@@ -1,128 +1,88 @@
 import React from "react";
-import { Feed, Icon, Grid, Segment, Container } from "semantic-ui-react";
+import {
+  Grid,
+  Segment,
+  Container,
+  Rail,
+  Header,
+  Divider,
+} from "semantic-ui-react";
+import { isMobile } from "react-device-detect";
+import RecentActivity from "./RecentActivity";
+import FriendCard from "./FriendCard";
+import Comments from "./Comments";
+import Trending from "./Trending";
+import MessageForm from "./MessageForm";
+
+// Only render feed and hide the additional features on mobile
+function MobileOnlyFeed() {
+  return (
+    <>
+      <MessageForm />
+      <Comments />
+    </>
+  );
+}
+
+// Only render feed and additional features on desktop
+function DesktopOnlyFeed() {
+  return (
+    <>
+      <Header>My Feed </Header>
+      <MessageForm />
+      <Comments />
+      {/* Friend layout */}
+      <Rail size="large" position="left">
+        <Container>
+          <Header>Friends List</Header>
+          <FriendCard></FriendCard>
+          <FriendCard></FriendCard>
+        </Container>
+      </Rail>
+      {/* Trending, Ads, Search, Recommendations, all those goodies. */}
+      <Rail size="large" position="right">
+        <Container>
+          <Segment>
+            <Header>Trending</Header>
+            <Divider />
+            <Trending />
+          </Segment>
+          <RecentActivity />
+          {/* <Segment>
+            <Header>Recommendations</Header>
+
+            <RecommendationCard />
+          </Segment> */}
+          {/* <Segment>Ads</Segment> */}
+        </Container>
+      </Rail>
+    </>
+  );
+}
+
+// Render based on the view. If you want to check the changes on
+// computer, enable mobile view and refresh.
+function RenderFeed() {
+  if (isMobile) {
+    return <MobileOnlyFeed />;
+  } else {
+    return <DesktopOnlyFeed />;
+  }
+}
 
 export default function Main() {
   return (
-    <Grid containers columns="equal" padded>
-      <Grid.Row>
-        {/* Friend layout */}
-        <Grid.Column>
-          <Segment>1</Segment>
-        </Grid.Column>
-        {/* Feed */}
-        <Grid.Column width={5}>
-          <Segment>
-            <Container>
-              <Feed>
-                <Feed.Event>
-                  <Feed.Label>
-                    <img src="/images/avatar/small/elliot.jpg" />
-                  </Feed.Label>
-                  <Feed.Content>
-                    <Feed.Summary>
-                      <Feed.User>Elliot Fu</Feed.User> added you as a friend
-                      <Feed.Date>1 Hour Ago</Feed.Date>
-                    </Feed.Summary>
-                    <Feed.Meta>
-                      <Feed.Like>
-                        <Icon name="like" />4 Likes
-                      </Feed.Like>
-                    </Feed.Meta>
-                  </Feed.Content>
-                </Feed.Event>
-
-                <Feed.Event>
-                  <Feed.Label image="/images/avatar/small/helen.jpg" />
-                  <Feed.Content>
-                    <Feed.Summary>
-                      <a>Helen Troy</a> added <a>2 new illustrations</a>
-                      <Feed.Date>4 days ago</Feed.Date>
-                    </Feed.Summary>
-                    <Feed.Extra images>
-                      <a>
-                        <img src="/images/wireframe/image.png" />
-                      </a>
-                      <a>
-                        <img src="/images/wireframe/image.png" />
-                      </a>
-                    </Feed.Extra>
-                    <Feed.Meta>
-                      <Feed.Like>
-                        <Icon name="like" />1 Like
-                      </Feed.Like>
-                    </Feed.Meta>
-                  </Feed.Content>
-                </Feed.Event>
-
-                <Feed.Event>
-                  <Feed.Label image="/images/avatar/small/jenny.jpg" />
-                  <Feed.Content>
-                    <Feed.Summary
-                      date="2 Days Ago"
-                      user="Jenny Hess"
-                      content="add you as a friend"
-                    />
-                    <Feed.Meta>
-                      <Feed.Like>
-                        <Icon name="like" />8 Likes
-                      </Feed.Like>
-                    </Feed.Meta>
-                  </Feed.Content>
-                </Feed.Event>
-
-                <Feed.Event>
-                  <Feed.Label image="/images/avatar/small/joe.jpg" />
-                  <Feed.Content>
-                    <Feed.Summary>
-                      <a>Joe Henderson</a> posted on his page
-                      <Feed.Date>3 days ago</Feed.Date>
-                    </Feed.Summary>
-                    <Feed.Extra text>
-                      Ours is a life of constant reruns. We're always circling
-                      back to where we'd we started, then starting all over
-                      again. Even if we don't run extra laps that day, we surely
-                      will come back for more of the same another day soon.
-                    </Feed.Extra>
-                    <Feed.Meta>
-                      <Feed.Like>
-                        <Icon name="like" />5 Likes
-                      </Feed.Like>
-                    </Feed.Meta>
-                  </Feed.Content>
-                </Feed.Event>
-
-                <Feed.Event>
-                  <Feed.Label image="/images/avatar/small/justen.jpg" />
-                  <Feed.Content>
-                    <Feed.Summary>
-                      <a>Justen Kitsune</a> added <a>2 new photos</a> of you
-                      <Feed.Date>4 days ago</Feed.Date>
-                    </Feed.Summary>
-                    <Feed.Extra images>
-                      <a>
-                        <img src="/images/wireframe/image.png" />
-                      </a>
-                      <a>
-                        <img src="/images/wireframe/image.png" />
-                      </a>
-                    </Feed.Extra>
-                    <Feed.Meta>
-                      <Feed.Like>
-                        <Icon name="like" />
-                        41 Likes
-                      </Feed.Like>
-                    </Feed.Meta>
-                  </Feed.Content>
-                </Feed.Event>
-              </Feed>
-            </Container>
-          </Segment>
-        </Grid.Column>
-        {/* Trending, Ads, Search, Recommendations */}
-        <Grid.Column>
-          <Segment>1</Segment>
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
+    <>
+      <div style={{ paddingTop: "50px", paddingBottom: "50px" }}></div>
+      <Grid stackable centered columns={3} padded>
+        <Grid.Row>
+          <Grid.Column>
+            <Segment stacked>
+              <RenderFeed />
+            </Segment>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </>
   );
 }
