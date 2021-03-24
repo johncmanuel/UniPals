@@ -1,7 +1,7 @@
 import Main from "components/Main";
 // import Login from "components/Login";
 import Navbar from "components/Navbar";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Profile from "components/Profile";
 import Groups from "components/Groups";
 import Notifications from "components/Notifications";
