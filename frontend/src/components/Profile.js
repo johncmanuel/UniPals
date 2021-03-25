@@ -1,12 +1,10 @@
 import React from "react";
-import { Image, Grid, Header, Divider, Segment } from "semantic-ui-react";
-import Navbar from "./Navbar";
+import { Image, Grid, Header, Divider } from "semantic-ui-react";
 import ProfileLayout from "./ProfileLayout";
 
 // Have a one column layout with multiple links (about, their interests, university)
 const Profile = () => (
   <>
-    {/* <Navbar /> */}
     <div style={{ paddingTop: "20vh" }}></div>
     <Grid stackable container>
       <Grid.Row>

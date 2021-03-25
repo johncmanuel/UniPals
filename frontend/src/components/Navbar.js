@@ -4,7 +4,7 @@ import "dna-responsive-nav/dist/dna-rn.css";
 import { NAMES } from "../names.json";
 import { Icon } from "semantic-ui-react";
 import { isMobile } from "react-device-detect";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const linkCSS = {
   paddingLeft: "10px",
