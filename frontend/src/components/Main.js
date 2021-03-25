@@ -18,6 +18,7 @@ import MessageForm from "./MessageForm";
 function MobileOnlyFeed() {
   return (
     <>
+      <Header>My Feed</Header>
       <MessageForm />
       <Comments />
     </>
@@ -28,12 +29,12 @@ function MobileOnlyFeed() {
 function DesktopOnlyFeed() {
   return (
     <>
-      <Header>My Feed </Header>
+      <Header>My Feed</Header>
       <MessageForm />
       <Comments />
       {/* Friend layout */}
       <Rail size="large" position="left">
-        <Container>
+        <Container fluid>
           <Header>Friends List</Header>
           <FriendCard></FriendCard>
           <FriendCard></FriendCard>
@@ -41,7 +42,7 @@ function DesktopOnlyFeed() {
       </Rail>
       {/* Trending, Ads, Search, Recommendations, all those goodies. */}
       <Rail size="large" position="right">
-        <Container>
+        <Container fluid>
           <Segment>
             <Header>Trending</Header>
             <Divider />
@@ -65,9 +66,8 @@ function DesktopOnlyFeed() {
 function RenderFeed() {
   if (isMobile) {
     return <MobileOnlyFeed />;
-  } else {
-    return <DesktopOnlyFeed />;
   }
+  return <DesktopOnlyFeed />;
 }
 
 export default function Main() {
@@ -77,7 +77,7 @@ export default function Main() {
       <Grid stackable centered columns={3} padded>
         <Grid.Row>
           <Grid.Column>
-            <Segment stacked>
+            <Segment>
               <RenderFeed />
             </Segment>
           </Grid.Column>
