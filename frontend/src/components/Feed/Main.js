@@ -14,6 +14,7 @@ import FriendCard from "../FriendCard";
 import Comments from "../Comments";
 import Trending from "./Trending";
 import MessageForm from "../MessageForm";
+import ApplyFlex from "components/ApplyFlex";
 
 // Example data
 const FriendData = [
@@ -22,6 +23,24 @@ const FriendData = [
     surname: "Sanchez",
     meta: "University of California, Irvine",
     description: "4th year at UCI. A genius student in the making.",
+  },
+  {
+    name: "Mike",
+    surname: "Woz",
+    meta: "San Francisco State University",
+    description: "1st year at SFSU as business major.",
+  },
+  {
+    name: "Mike",
+    surname: "Woz",
+    meta: "San Francisco State University",
+    description: "1st year at SFSU as business major.",
+  },
+  {
+    name: "Mike",
+    surname: "Woz",
+    meta: "San Francisco State University",
+    description: "1st year at SFSU as business major.",
   },
   {
     name: "Mike",
@@ -70,7 +89,7 @@ function DesktopOnlyFeed() {
       {/* Friend layout */}
       <Rail size="large" position="left">
         <Header>Friends List</Header>
-        <div style={{ overflow: "auto" }}>
+        <Segment style={{ overflow: "auto", maxHeight: 600 }}>
           <Container fluid centered>
             {/* <FriendCard></FriendCard> */}
             <Card.Group stackable itemsPerRow="1">
@@ -79,7 +98,7 @@ function DesktopOnlyFeed() {
               ))}
             </Card.Group>
           </Container>
-        </div>
+        </Segment>
       </Rail>
       {/* Trending, Ads, Search, Recommendations, all those goodies. */}
       <Rail size="large" position="right">
@@ -113,7 +132,7 @@ function RenderFeed() {
 
 export default function Main() {
   return (
-    <>
+    <ApplyFlex>
       <div style={{ paddingTop: "50px", paddingBottom: "50px" }}></div>
       <Grid stackable centered columns={3} padded>
         <Grid.Row>
@@ -124,6 +143,6 @@ export default function Main() {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    </>
+    </ApplyFlex>
   );
 }

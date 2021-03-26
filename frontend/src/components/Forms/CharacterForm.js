@@ -1,3 +1,4 @@
+import ApplyFlex from "components/ApplyFlex";
 import React, { Component } from "react";
 import { Grid, Segment, Container, Header } from "semantic-ui-react";
 import ApplyPadding from "../ApplyPadding";
@@ -799,7 +800,7 @@ const getLengthOfTest =
 console.log("message: " + getLengthOfTest.toString());
 
 const CharacterForm = () => (
-  <>
+  <ApplyFlex>
     <ApplyPadding />
     <Grid
       stackable
@@ -830,7 +831,7 @@ const CharacterForm = () => (
         </Grid.Column>
       </Grid.Row>
     </Grid>
-  </>
+  </ApplyFlex>
 );
 
 export default CharacterForm;

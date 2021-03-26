@@ -2,6 +2,8 @@ import ApplyPadding from "components/ApplyPadding";
 import React, { Component } from "react";
 import { Form, Grid, Icon, Message } from "semantic-ui-react";
 import { NAMES } from "../../names.json";
+import axios from "axios";
+import ApplyFlex from "components/ApplyFlex";
 
 class SignUp extends Component {
   state = {
@@ -78,9 +80,40 @@ class SignUp extends Component {
       this.setState({ submittedPassword: password });
     }
 
+    // If any errors, send them to the backend(?), else send
+    // a JSON to the backend.
     if (error) {
       this.setState({ formError: true });
       return;
+    } else {
+      // Set up JSON for backend to process
+      const user = {
+        name: name,
+        surname: surname,
+        username: username,
+        email: email,
+        password: password,
+      };
+
+      const someUrlToPostTo = "";
+      axios
+        .post(someUrlToPostTo, { user })
+        .then((res) => {
+          console.log(res);
+          console.log(res.data);
+        })
+        .catch((err) => {
+          // Check for 4xx or 5xx errors
+          if (err.response) {
+            console.log("error! " + err.response);
+          } else if (err.request) {
+            // check for errors during request
+            console.log(err.request);
+          } else {
+            // check for anything else
+            console.log(err);
+          }
+        });
     }
   };
 
@@ -106,7 +139,7 @@ class SignUp extends Component {
     //   createUserError,
     // } = this.state;
     return (
-      <>
+      <ApplyFlex>
         <ApplyPadding />
         <Grid stackable container>
           <Grid.Row>
@@ -240,7 +273,7 @@ class SignUp extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      </>
+      </ApplyFlex>
     );
   }
 }

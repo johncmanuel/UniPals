@@ -7,6 +7,7 @@ import {
   Card,
   Comment,
 } from "semantic-ui-react";
+import ApplyFlex from "./ApplyFlex";
 import ApplyPadding from "./ApplyPadding";
 import MessageForm from "./MessageForm";
 
@@ -109,7 +110,7 @@ const ListOfGroups = () => <Card.Group centered stackable items={items} />;
 
 function Groups() {
   return (
-    <>
+    <ApplyFlex>
       <ApplyPadding />
       <Grid stackable container divided columns={2}>
         <Grid.Row>
@@ -130,7 +131,7 @@ function Groups() {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    </>
+    </ApplyFlex>
   );
 }
 

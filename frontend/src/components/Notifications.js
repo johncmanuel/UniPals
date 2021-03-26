@@ -7,6 +7,7 @@ import {
   Header,
   Container,
 } from "semantic-ui-react";
+import ApplyFlex from "./ApplyFlex";
 import ApplyPadding from "./ApplyPadding";
 
 const NotificationCardGroup = () => (
@@ -87,7 +88,7 @@ const NotificationCardGroup = () => (
 );
 
 const Notifications = () => (
-  <>
+  <ApplyFlex>
     <ApplyPadding />
     <Grid stackable container centered>
       <Grid.Row>
@@ -101,7 +102,7 @@ const Notifications = () => (
         </Grid.Column>
       </Grid.Row>
     </Grid>
-  </>
+  </ApplyFlex>
 );
 
 export default Notifications;

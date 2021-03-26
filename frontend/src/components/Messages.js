@@ -3,8 +3,40 @@ import { Grid, Header, Comment } from "semantic-ui-react";
 import FriendCard from "components/FriendCard";
 import MessageForm from "components/MessageForm";
 import ApplyPadding from "components/ApplyPadding";
+import ApplyFlex from "./ApplyFlex";
 
-const classes = {};
+// Example data
+const FriendData = [
+  {
+    name: "Rick",
+    surname: "Sanchez",
+    meta: "University of California, Irvine",
+    description: "4th year at UCI. A genius student in the making.",
+  },
+  {
+    name: "Mike",
+    surname: "Woz",
+    meta: "San Francisco State University",
+    description: "1st year at SFSU as business major.",
+  },
+];
+
+const list = [];
+function CreateFriendCard() {
+  for (let i = 0; i < FriendData.length; i++) {
+    let elem = FriendData[i];
+    list.push(
+      <FriendCard
+        key={i}
+        name={elem["name"]}
+        surname={elem["surname"]}
+        meta={elem["meta"]}
+        description={elem["description"]}
+      />
+    );
+  }
+}
+CreateFriendCard();
 
 const MessageBox = () => (
   <Comment.Group size="large">
@@ -44,13 +76,15 @@ const MessageBox = () => (
 
 function Messages() {
   return (
-    <>
+    <ApplyFlex>
       <ApplyPadding />
       <Grid stackable container columns={2}>
         <Grid.Row>
           <Grid.Column width="6">
             <Header>Friends List</Header>
-            <FriendCard />
+            {list.map((component, key) => (
+              <React.Fragment key={key}>{component}</React.Fragment>
+            ))}
           </Grid.Column>
           <Grid.Column>
             <MessageBox />
@@ -58,7 +92,7 @@ function Messages() {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    </>
+    </ApplyFlex>
   );
 }
 
