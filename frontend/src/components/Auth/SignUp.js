@@ -86,25 +86,25 @@ class SignUp extends Component {
 
   render() {
     // For testing
-    const {
-      name,
-      surname,
-      username,
-      password,
-      email,
-      submittedName,
-      submittedSurname,
-      submittedUsername,
-      submittedEmail,
-      submittedPassword,
-      nameError,
-      surnameError,
-      usernameError,
-      emailError,
-      passwordError,
-      formError,
-      createUserError,
-    } = this.state;
+    // const {
+    //   name,
+    //   surname,
+    //   username,
+    //   password,
+    //   email,
+    //   submittedName,
+    //   submittedSurname,
+    //   submittedUsername,
+    //   submittedEmail,
+    //   submittedPassword,
+    //   nameError,
+    //   surnameError,
+    //   usernameError,
+    //   emailError,
+    //   passwordError,
+    //   formError,
+    //   createUserError,
+    // } = this.state;
     return (
       <>
         <ApplyPadding />
@@ -168,7 +168,12 @@ class SignUp extends Component {
                   name="email"
                   value={this.state.email}
                   onChange={this.handleChange}
-                  error={this.state.emailError}
+                  error={
+                    this.state.emailError && {
+                      content: "Please enter a valid email address.",
+                      pointing: "below",
+                    }
+                  }
                 />
                 <Form.Input
                   label="Password"
@@ -176,7 +181,12 @@ class SignUp extends Component {
                   name="password"
                   value={this.state.password}
                   onChange={this.handleChange}
-                  error={this.state.passwordError}
+                  error={
+                    this.state.passwordError && {
+                      content: "Password must be bigger than 8 characters.",
+                      pointing: "below",
+                    }
+                  }
                 />
                 <Form.Button
                   fluid
