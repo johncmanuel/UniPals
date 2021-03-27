@@ -92,6 +92,7 @@ class SignUp extends Component {
       return;
     } else {
       this.setState({ isSubmitted: true });
+      // Transfer accepted states into a JSON
       // Set up JSON for backend to process
       const user = {
         first_name: name,
@@ -126,7 +127,7 @@ class SignUp extends Component {
         });
     }
 
-    // Reset state
+    // Reset state after submissions
     this.setState({
       name: "",
       surname: "",
