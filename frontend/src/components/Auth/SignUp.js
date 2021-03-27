@@ -4,6 +4,9 @@ import { Form, Grid, Icon, Message } from "semantic-ui-react";
 import { NAMES } from "../../names.json";
 import axios from "axios";
 import ApplyFlex from "components/ApplyFlex";
+import { Link } from "react-router-dom";
+
+const BACKEND_URL = "http://127.0.0.1:8000/";
 
 class SignUp extends Component {
   state = {
@@ -30,6 +33,8 @@ class SignUp extends Component {
     // user exists in the database or not.
     formError: false,
     createUserError: false,
+    // Check if user successsfully submits
+    isSubmitted: false,
   };
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
@@ -86,21 +91,26 @@ class SignUp extends Component {
       this.setState({ formError: true });
       return;
     } else {
+      this.setState({ isSubmitted: true });
       // Set up JSON for backend to process
       const user = {
-        name: name,
-        surname: surname,
+        first_name: name,
+        last_name: surname,
         username: username,
         email: email,
         password: password,
       };
 
-      const someUrlToPostTo = "";
+      // Send request to backend with the user information
       axios
-        .post(someUrlToPostTo, { user })
+        .post(BACKEND_URL + "api/users/", user, {
+          headers: { "Content-Type": "application/json" },
+        })
         .then((res) => {
+          console.log(user);
           console.log(res);
           console.log(res.data);
+          this.setState({ isSubmitted: true });
         })
         .catch((err) => {
           // Check for 4xx or 5xx errors
@@ -115,6 +125,15 @@ class SignUp extends Component {
           }
         });
     }
+
+    // Reset state
+    this.setState({
+      name: "",
+      surname: "",
+      username: "",
+      email: "",
+      password: "",
+    });
   };
 
   render() {
@@ -155,12 +174,20 @@ class SignUp extends Component {
                   this.handleSubmit(e);
                 }}
                 error={this.state.createUserError || this.state.formError}
+                success={this.state.isSubmitted}
               >
                 {this.state.createUserError ? (
                   <Message
                     error
                     header="Account Already Exists"
                     content="An account already exists for this email, please log in or confirm that your email address is correct."
+                  />
+                ) : null}
+                {this.state.isSubmitted ? (
+                  <Message
+                    success
+                    header="Your user registration was successful."
+                    content="You may now login with the username you have chosen."
                   />
                 ) : null}
                 <Form.Group widths="equal">
@@ -268,7 +295,8 @@ class SignUp extends Component {
               </pre> */}
               <Message attached="bottom" warning>
                 <Icon name="help" />
-                Already signed up?&nbsp;<a href="#">Login here</a>&nbsp;instead.
+                Already signed up?&nbsp;<Link to="/">Login here</Link>
+                &nbsp;instead.
               </Message>
             </Grid.Column>
           </Grid.Row>

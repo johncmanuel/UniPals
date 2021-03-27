@@ -1,4 +1,5 @@
 import ApplyFlex from "components/ApplyFlex";
+import ApplyPadding from "components/ApplyPadding";
 import React from "react";
 import { Image, Grid, Header, Divider } from "semantic-ui-react";
 import ProfileLayout from "./ProfileLayout";
@@ -6,7 +7,7 @@ import ProfileLayout from "./ProfileLayout";
 // Have a one column layout with multiple links (about, their interests, university)
 const Profile = () => (
   <ApplyFlex>
-    <div style={{ paddingTop: "20vh" }}></div>
+    <ApplyPadding />
     <Grid stackable container>
       <Grid.Row>
         <Grid.Column>
