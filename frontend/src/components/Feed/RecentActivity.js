@@ -9,31 +9,31 @@ const RecentActivity = () => (
     <Card.Content>
       <Feed>
         <Feed.Event>
-          <Feed.Label image="/images/avatar/small/jenny.jpg" />
+          <Feed.Label image="https://ui-avatars.com/api/?background=random&name=Bob+Schneider" />
           <Feed.Content>
             <Feed.Date content="1 day ago" />
             <Feed.Summary>
-              You added <a>Jenny Hess</a> to your <a>coworker</a> group.
+              You added <a>Bob Schneider</a> to your <a>CS majors</a> group.
             </Feed.Summary>
           </Feed.Content>
         </Feed.Event>
 
         <Feed.Event>
-          <Feed.Label image="/images/avatar/small/molly.png" />
+          <Feed.Label image="https://ui-avatars.com/api/?background=random&name=Anaiya+Hope" />
           <Feed.Content>
             <Feed.Date content="3 days ago" />
             <Feed.Summary>
-              You added <a>Molly Malone</a> as a friend.
+              You added <a>Anaiya Hope</a> as a friend.
             </Feed.Summary>
           </Feed.Content>
         </Feed.Event>
 
         <Feed.Event>
-          <Feed.Label image="/images/avatar/small/elliot.jpg" />
+          <Feed.Label image="https://ui-avatars.com/api/?background=random&name=Rick+Sanchez" />
           <Feed.Content>
             <Feed.Date content="4 days ago" />
             <Feed.Summary>
-              You added <a>Elliot Baker</a> to your <a>musicians</a> group.
+              You added <a>Rick Sanchez</a> to your <a>cool people</a> group.
             </Feed.Summary>
           </Feed.Content>
         </Feed.Event>

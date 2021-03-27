@@ -10,6 +10,7 @@ import {
 import ApplyFlex from "./ApplyFlex";
 import ApplyPadding from "./ApplyPadding";
 import MessageForm from "./MessageForm";
+import CreateComment from "./CreateComment";
 
 const items = [
   {
@@ -22,7 +23,7 @@ const items = [
     fluid: true,
   },
   {
-    header: "University of California, Irvine",
+    header: "Skyline Community College",
     fluid: true,
   },
   {
@@ -30,79 +31,90 @@ const items = [
     fluid: true,
   },
   {
-    header: "University of California, Berkeley",
+    header: "San Francisco State University",
     fluid: true,
   },
   {
-    header: "University of California, Davis",
+    header: "San Jose State University",
     fluid: true,
+  },
+];
+
+const dummyData = [
+  {
+    avatar: "https://ui-avatars.com/api/?background=random&name=Hashim+Cano",
+    name: "Hashim Cano",
+    metadata: "Today at 3:46 PM",
+    text: "Hey everyone! Nice to meet you all!",
+    replies: [
+      {
+        avatar: "https://ui-avatars.com/api/?background=random&name=Mila+Wood",
+        name: "Mila Wood",
+        metadata: "Today at 3:47 PM",
+        text: "Hey Hashim!",
+        replies: [],
+      },
+      {
+        avatar:
+          "https://ui-avatars.com/api/?background=random&name=Paloma+Sparrow",
+        name: "Paloma Sparrow",
+        metadata: "Today at 3:47 PM",
+        text: "Hi Hashim!",
+
+        replies: [],
+      },
+    ],
+  },
+  {
+    avatar: "https://ui-avatars.com/api/?background=random&name=Ezra+Meyer",
+    name: "Ezra Meyer",
+    metadata: "Today at 8:36 AM",
+    text: "Anyone like cookies?",
+    replies: [
+      {
+        avatar:
+          "https://ui-avatars.com/api/?background=random&name=Anaiya+Hope",
+        name: "Sahara Stafford",
+        metadata: "Today at 9:12 AM",
+        text: "Me!",
+        replies: [
+          {
+            avatar:
+              "https://ui-avatars.com/api/?background=random&name=Ezra+Meyer",
+            name: "Ezra Meyer",
+            metadata: "Today at 8:36 AM",
+            text: "Nice, that's awesome!",
+            replies: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    avatar: "https://ui-avatars.com/api/?background=random&name=Harlen+Hough",
+    name: "Harlen Hough",
+    metadata: "Today at 8:36 AM",
+    text: "Wooo more testing...",
+    replies: [],
   },
 ];
 
 const UCLAGroupMessages = () => (
   <Comment.Group>
     <Header as="h3" dividing>
-      University of California, Los Angeles
+      {items[0]["header"]}
     </Header>
-
-    <Comment>
-      <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/matt.jpg" />
-      <Comment.Content>
-        <Comment.Author as="a">Matt</Comment.Author>
-        <Comment.Metadata>
-          <div>Today at 5:42PM</div>
-        </Comment.Metadata>
-        <Comment.Text>How artistic!</Comment.Text>
-        <Comment.Actions>
-          <Comment.Action>Reply</Comment.Action>
-        </Comment.Actions>
-      </Comment.Content>
-    </Comment>
-
-    <Comment>
-      <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/elliot.jpg" />
-      <Comment.Content>
-        <Comment.Author as="a">Elliot Fu</Comment.Author>
-        <Comment.Metadata>
-          <div>Yesterday at 12:30AM</div>
-        </Comment.Metadata>
-        <Comment.Text>
-          <p>This has been very useful for my research. Thanks as well!</p>
-        </Comment.Text>
-        <Comment.Actions>
-          <Comment.Action>Reply</Comment.Action>
-        </Comment.Actions>
-      </Comment.Content>
-      <Comment.Group>
-        <Comment>
-          <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/jenny.jpg" />
-          <Comment.Content>
-            <Comment.Author as="a">Jenny Hess</Comment.Author>
-            <Comment.Metadata>
-              <div>Just now</div>
-            </Comment.Metadata>
-            <Comment.Text>Elliot you are always so right :)</Comment.Text>
-            <Comment.Actions>
-              <Comment.Action>Reply</Comment.Action>
-            </Comment.Actions>
-          </Comment.Content>
-        </Comment>
-      </Comment.Group>
-    </Comment>
-
-    <Comment>
-      <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/joe.jpg" />
-      <Comment.Content>
-        <Comment.Author as="a">Joe Henderson</Comment.Author>
-        <Comment.Metadata>
-          <div>5 days ago</div>
-        </Comment.Metadata>
-        <Comment.Text>Dude, this is awesome. Thanks so much</Comment.Text>
-        <Comment.Actions>
-          <Comment.Action>Reply</Comment.Action>
-        </Comment.Actions>
-      </Comment.Content>
-    </Comment>
+    {dummyData.map((component, key) => (
+      <CreateComment
+        key={key}
+        avatar={component.avatar}
+        name={component.name}
+        metadata={component.metadata}
+        image={component.image}
+        text={component.text}
+        replies={component.replies}
+      />
+    ))}
   </Comment.Group>
 );
 
@@ -110,7 +122,7 @@ const ListOfGroups = () => <Card.Group centered stackable items={items} />;
 
 function Groups() {
   return (
-    <ApplyFlex>
+    <>
       <ApplyPadding />
       <Grid stackable container divided columns={2}>
         <Grid.Row>
@@ -131,7 +143,7 @@ function Groups() {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    </ApplyFlex>
+    </>
   );
 }
 

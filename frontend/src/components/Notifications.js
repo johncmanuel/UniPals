@@ -17,13 +17,11 @@ const NotificationCardGroup = () => (
         <Image
           floated="right"
           size="mini"
-          src="https://react.semantic-ui.com/images/avatar/large/steve.jpg"
+          src="https://ui-avatars.com/api/?background=random&name=Steve+Sanders"
         />
         <Card.Header>Steve Sanders</Card.Header>
-        <Card.Meta>Friends of Elliot</Card.Meta>
-        <Card.Description>
-          Steve wants to add you to the group <strong>best friends</strong>
-        </Card.Description>
+        <Card.Meta>New user</Card.Meta>
+        <Card.Description>Steve wants to add you.</Card.Description>
       </Card.Content>
       <Card.Content extra>
         <div className="ui two buttons">
@@ -41,13 +39,11 @@ const NotificationCardGroup = () => (
         <Image
           floated="right"
           size="mini"
-          src="https://react.semantic-ui.com/images/avatar/large/molly.png"
+          src="https://ui-avatars.com/api/?background=random&name=Molly+Thomas"
         />
         <Card.Header>Molly Thomas</Card.Header>
         <Card.Meta>New User</Card.Meta>
-        <Card.Description>
-          Molly wants to add you to the group <strong>musicians</strong>
-        </Card.Description>
+        <Card.Description>Molly wants to add you.</Card.Description>
       </Card.Content>
       <Card.Content extra>
         <div className="ui two buttons">
@@ -65,13 +61,11 @@ const NotificationCardGroup = () => (
         <Image
           floated="right"
           size="mini"
-          src="https://react.semantic-ui.com/images/avatar/large/jenny.jpg"
+          src="https://ui-avatars.com/api/?background=random&name=Jenny+Lawrence"
         />
         <Card.Header>Jenny Lawrence</Card.Header>
         <Card.Meta>New User</Card.Meta>
-        <Card.Description>
-          Jenny requested permission to view your contact details
-        </Card.Description>
+        <Card.Description>Jenny Lawrence wants to add you.</Card.Description>
       </Card.Content>
       <Card.Content extra>
         <div className="ui two buttons">

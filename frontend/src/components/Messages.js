@@ -4,22 +4,7 @@ import FriendCard from "components/FriendCard";
 import MessageForm from "components/MessageForm";
 import ApplyPadding from "components/ApplyPadding";
 import ApplyFlex from "./ApplyFlex";
-
-// Example data
-const FriendData = [
-  {
-    name: "Rick",
-    surname: "Sanchez",
-    meta: "University of California, Irvine",
-    description: "4th year at UCI. A genius student in the making.",
-  },
-  {
-    name: "Mike",
-    surname: "Woz",
-    meta: "San Francisco State University",
-    description: "1st year at SFSU as business major.",
-  },
-];
+import FriendData from "./DummyData";
 
 const list = [];
 function CreateFriendCard() {
@@ -47,7 +32,7 @@ const MessageBox = () => (
     <Comment>
       <Comment.Avatar
         as="a"
-        src="https://e7.pngegg.com/pngimages/814/977/png-clipart-rick-sanchez-pocket-mortys-morty-smith-rick-and-morty-season-3-meeseeks-and-destroy-others-white-face.png"
+        src="https://ui-avatars.com/api/?background=random&name=Rick+Sanchez"
       />
       <Comment.Content>
         <Comment.Author as="a">Rick Sanchez</Comment.Author>
@@ -61,14 +46,14 @@ const MessageBox = () => (
     <Comment className="">
       <Comment.Avatar
         as="a"
-        src="https://e7.pngegg.com/pngimages/814/977/png-clipart-rick-sanchez-pocket-mortys-morty-smith-rick-and-morty-season-3-meeseeks-and-destroy-others-white-face.png"
+        src="https://ui-avatars.com/api/?background=random&name=Rick+Sanchez"
       />
       <Comment.Content>
         <Comment.Author as="a">Rick Sanchez</Comment.Author>
         <Comment.Metadata>
           <span>Today at 5:42PM</span>
         </Comment.Metadata>
-        <Comment.Text>Yo are you there?</Comment.Text>
+        <Comment.Text>Are you there?</Comment.Text>
       </Comment.Content>
     </Comment>
   </Comment.Group>

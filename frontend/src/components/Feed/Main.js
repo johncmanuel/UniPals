@@ -10,63 +10,16 @@ import {
 } from "semantic-ui-react";
 import { isMobile } from "react-device-detect";
 import RecentActivity from "./RecentActivity";
-import FriendCard from "../FriendCard";
 import Comments from "../Comments";
 import Trending from "./Trending";
 import MessageForm from "../MessageForm";
-import ApplyFlex from "components/ApplyFlex";
-
-// Example data
-const FriendData = [
-  {
-    name: "Rick",
-    surname: "Sanchez",
-    meta: "University of California, Irvine",
-    description: "4th year at UCI. A genius student in the making.",
-  },
-  {
-    name: "Mike",
-    surname: "Woz",
-    meta: "San Francisco State University",
-    description: "1st year at SFSU as business major.",
-  },
-  {
-    name: "Mike",
-    surname: "Woz",
-    meta: "San Francisco State University",
-    description: "1st year at SFSU as business major.",
-  },
-  {
-    name: "Mike",
-    surname: "Woz",
-    meta: "San Francisco State University",
-    description: "1st year at SFSU as business major.",
-  },
-  {
-    name: "Mike",
-    surname: "Woz",
-    meta: "San Francisco State University",
-    description: "1st year at SFSU as business major.",
-  },
-];
+// import ApplyFlex from "components/ApplyFlex";
+import FriendData from "../DummyData";
+import CreateFriendCard from "../CreateFriendCard";
+import ApplyPadding from "components/ApplyPadding";
 
 const list = [];
-function CreateFriendCard() {
-  for (let i = 0; i < FriendData.length; i++) {
-    let elem = FriendData[i];
-    list.push(
-      <FriendCard
-        key={i}
-        name={elem["name"]}
-        surname={elem["surname"]}
-        meta={elem["meta"]}
-        description={elem["description"]}
-      />
-    );
-  }
-}
-
-CreateFriendCard();
+CreateFriendCard(list, FriendData);
 
 // Only render feed and hide the additional features on mobile
 function MobileOnlyFeed() {
@@ -91,7 +44,6 @@ function DesktopOnlyFeed() {
         <Header>Friends List</Header>
         <Segment style={{ overflow: "auto", maxHeight: 600 }}>
           <Container fluid centered>
-            {/* <FriendCard></FriendCard> */}
             <Card.Group stackable itemsPerRow="1">
               {list.map((component, key) => (
                 <React.Fragment key={key}>{component}</React.Fragment>
@@ -109,12 +61,6 @@ function DesktopOnlyFeed() {
             <Trending />
           </Segment>
           <RecentActivity />
-          {/* <Segment>
-            <Header>Recommendations</Header>
-
-            <RecommendationCard />
-          </Segment> */}
-          {/* <Segment>Ads</Segment> */}
         </Container>
       </Rail>
     </>
@@ -132,8 +78,9 @@ function RenderFeed() {
 
 export default function Main() {
   return (
-    <ApplyFlex>
-      <div style={{ paddingTop: "50px", paddingBottom: "50px" }}></div>
+    <>
+      <ApplyPadding paddingTop="15vh" />
+      {/* <div style={{ paddingTop: "50px", paddingBottom: "50px" }}></div> */}
       <Grid stackable centered columns={3} padded>
         <Grid.Row>
           <Grid.Column>
@@ -143,6 +90,6 @@ export default function Main() {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    </ApplyFlex>
+    </>
   );
 }

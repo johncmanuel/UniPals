@@ -13,7 +13,7 @@ const Profile = () => (
         <Grid.Column>
           {/* Example profile pic */}
           <Image
-            src="https://react.semantic-ui.com/images/wireframe/square-image.png"
+            src="https://ui-avatars.com/api/?background=random&name=Benett+Watts"
             size="small"
             circular
             centered
