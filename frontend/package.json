@@ -24,8 +24,8 @@
     "test": "craco test",
     "eject": "react-scripts eject",
     "migrate-build": "rmdir /s \"../backend/backend/static\" & rmdir /s \"../backend/backend/build\" & rmdir /s \"../frontend/build\" & npm run build & move build/static ../backend/backend/static & move build ../backend/backend",
-    "clean-run-build": "npm run migrate-build && cd ../backend/Scripts && activate && cd .. && python manage.py runserver",
-    "run-build": " cd ../backend/Scripts && activate && cd .. && python manage.py runserver"
+    "clean-run-build": "npm run migrate-build && cd ../backend && activate && python manage.py runserver",
+    "run-build": " cd ../backend && activate && python manage.py runserver"
   },
   "eslintConfig": {
     "extends": [
