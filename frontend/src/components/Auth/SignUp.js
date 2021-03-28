@@ -14,17 +14,20 @@ class SignUp extends Component {
     name: "",
     surname: "",
     username: "",
+    college: "",
     email: "",
     password: "",
     // Store results here
     submittedName: "",
     submittedSurname: "",
+    submittedCollege: "",
     submittedUsername: "",
     submittedEmail: "",
     submittedPassword: "",
     // Handle errors
     nameError: false,
     surnameError: false,
+    submittedName: false,
     usernameError: false,
     emailError: false,
     passwordError: false,
@@ -41,7 +44,7 @@ class SignUp extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { name, surname, username, email, password } = this.state;
+    const { name, surname, college, username, email, password } = this.state;
     let error = false;
 
     // Manually check each input field
@@ -58,6 +61,13 @@ class SignUp extends Component {
       error = true;
     } else {
       this.setState({ submittedSurname: surname });
+    }
+
+    if (college === "") {
+      this.setState({ collegeError: true });
+      error = true;
+    } else {
+      this.setState({ submittedSurname: college });
     }
 
     if (username === "") {
@@ -97,6 +107,7 @@ class SignUp extends Component {
       const user = {
         first_name: name,
         last_name: surname,
+        college: college,
         username: username,
         email: email,
         password: password,
@@ -131,6 +142,7 @@ class SignUp extends Component {
     this.setState({
       name: "",
       surname: "",
+      college: "",
       username: "",
       email: "",
       password: "",
@@ -138,26 +150,6 @@ class SignUp extends Component {
   };
 
   render() {
-    // For testing
-    // const {
-    //   name,
-    //   surname,
-    //   username,
-    //   password,
-    //   email,
-    //   submittedName,
-    //   submittedSurname,
-    //   submittedUsername,
-    //   submittedEmail,
-    //   submittedPassword,
-    //   nameError,
-    //   surnameError,
-    //   usernameError,
-    //   emailError,
-    //   passwordError,
-    //   formError,
-    //   createUserError,
-    // } = this.state;
     return (
       <ApplyFlex>
         <ApplyPadding />
@@ -214,6 +206,15 @@ class SignUp extends Component {
                   />
                 </Form.Group>
                 <Form.Input
+                  label="College"
+                  placeholder="Queen's University"
+                  type="text"
+                  name="college"
+                  value={this.state.college}
+                  onChange={this.handleChange}
+                  error={this.state.collegeError}
+                />
+                <Form.Input
                   label="Username"
                   placeholder="dogeuser0385"
                   type="text"
@@ -256,6 +257,7 @@ class SignUp extends Component {
                   disabled={
                     !this.state.name ||
                     !this.state.surname ||
+                    !this.state.college ||
                     !this.state.username ||
                     !this.state.email ||
                     !this.state.password
