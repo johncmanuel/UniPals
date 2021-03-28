@@ -32,7 +32,7 @@ class LoginForm extends Component {
       .post(BACKEND_URL + "auth/", user, {
         headers: { "Content-Type": "application/json" },
       })
-      .then((data) => this.props.onLogin(data.token))
+      .then((data) => this.props.onLogin(data.token, user))
       .catch((err) => {
         // Check for 4xx or 5xx errors
         if (err.response) {
