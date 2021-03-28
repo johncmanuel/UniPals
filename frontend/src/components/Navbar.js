@@ -37,7 +37,9 @@ const links = (
       </Link>
     </li>
     <li key="signout">
-      <a style={{ cursor: "pointer" }}>Sign Out</a>
+      <Link to="/logout" aria-label="logout" title="logout">
+        <a style={{ cursor: "pointer" }}>Sign Out</a>
+      </Link>
     </li>
   </ul>
 );
@@ -73,7 +75,9 @@ const linksMobile = (
       </Link>
     </li>
     <li key="signout">
-      <a style={{ cursor: "pointer" }}>Sign Out</a>
+      <Link to="/logout" aria-label="logout" title="logout">
+        <a style={{ cursor: "pointer" }}>Sign Out</a>
+      </Link>
     </li>
   </ul>
 );

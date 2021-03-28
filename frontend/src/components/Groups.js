@@ -35,7 +35,11 @@ const items = [
     fluid: true,
   },
   {
-    header: "San Jose State University",
+    header: "CS majors",
+    fluid: true,
+  },
+  {
+    header: "cool people",
     fluid: true,
   },
 ];

@@ -116,24 +116,23 @@ const dummyData = [
           "https://cdn.pixabay.com/photo/2014/05/02/21/49/laptop-336373_960_720.jpg",
         text:
           "Most likely. Their prices are increasing by the minute. I think it's best to buy them ASAP.",
-        replies: [
-          {
-            avatar:
-              "https://ui-avatars.com/api/?background=random&name=Bob+Schneider",
-            name: "Bob Schneider",
-            metadata: "Yesterday at 9:40 PM",
-            text: "Yes yes!",
-            replies: [],
-          },
-          {
-            avatar:
-              "https://ui-avatars.com/api/?background=random&name=Cadi+Shannon",
-            name: "Cadi Shannon",
-            metadata: "Yesterday at 10:012 PM",
-            text: "I will! Definitely putting some of my money into that.",
-            replies: [],
-          },
-        ],
+        replies: [],
+      },
+      {
+        avatar:
+          "https://ui-avatars.com/api/?background=random&name=Bob+Schneider",
+        name: "Bob Schneider",
+        metadata: "Yesterday at 9:40 PM",
+        text: "Yes yes!",
+        replies: [],
+      },
+      {
+        avatar:
+          "https://ui-avatars.com/api/?background=random&name=Cadi+Shannon",
+        name: "Cadi Shannon",
+        metadata: "Yesterday at 10:012 PM",
+        text: "I will! Definitely putting some of my money into that.",
+        replies: [],
       },
     ],
   },
