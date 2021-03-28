@@ -19,7 +19,25 @@ import CreateFriendCard from "../CreateFriendCard";
 import ApplyPadding from "components/ApplyPadding";
 
 const list = [];
+const list2 = [];
 CreateFriendCard(list, FriendData);
+
+const RecommendationsData = [
+  {
+    name: "Tai",
+    surname: "Flores",
+    meta: "San Jose State University",
+    description: "2nd year at SJSU. I love tech.",
+  },
+  {
+    name: "Kaeden",
+    surname: "Chambers",
+    meta: "University of Nevada, Las Vegas",
+    description: "Aspiring scientist.",
+  },
+];
+
+CreateFriendCard(list2, RecommendationsData);
 
 // Only render feed and hide the additional features on mobile
 function MobileOnlyFeed() {
@@ -46,6 +64,17 @@ function DesktopOnlyFeed() {
           <Container fluid centered>
             <Card.Group stackable itemsPerRow="1">
               {list.map((component, key) => (
+                <React.Fragment key={key}>{component}</React.Fragment>
+              ))}
+            </Card.Group>
+          </Container>
+        </Segment>
+        <Header>Recommendations</Header>
+        <Segment>
+          <Header as="h3">Based on your personality...</Header>
+          <Container fluid centered>
+            <Card.Group stackable itemsPerRow="1">
+              {list2.map((component, key) => (
                 <React.Fragment key={key}>{component}</React.Fragment>
               ))}
             </Card.Group>
