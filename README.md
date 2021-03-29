@@ -4,6 +4,9 @@
 
 # UniPals
 
+## Links
+Devpost: https://devpost.com/software/unipals-l8jd7z
+
 ## Inspiration
 
 The recent COVID-19 pandemic has severely affected the social aspects of many university students throughout the country. The shift from in-person to online teaching has made it harder for students to proactively make friends virtually. In order to solve this issue, we decided to develop a social media platform designed for university students in mind.
